@@ -6,10 +6,18 @@ Linkedlist::Linkedlist(/* args */)
 {
     First = Last = NULL;
     N_Number = 0;
+    Organ = 0;
 }
 
 Linkedlist::~Linkedlist()
 {
+    Node *Ptr = this->First;
+    for (int i = 0; i < this->N_numGet(); i++)
+    {
+        Node *del = Ptr;
+        Ptr = Ptr->next;
+        delete del;
+    }
 }
 int Linkedlist::N_numGet() const
 {
@@ -60,6 +68,61 @@ int *Linkedlist::LinkedToArray()
         }
         return array;
     }
+}
+void Linkedlist::sort()
+{
+    int *List = this->LinkedToArray();
+    const int List_Length = this->N_numGet();
+    this->MakeListEmpty(List_Length);
+    Radix Do_sort(List, List_Length);
+    int *sortedList = Do_sort.sort();
+    for (int i = 0; i < List_Length; i++)
+    {
+        this->addNode(sortedList[i]);
+    }
+    this->Def_Organ();
+}
+void Linkedlist::LastNdel()
+{
+    if (this->First == NULL)
+        return;
+    if (First == Last)
+    {
+        delete First;
+        First = Last = NULL;
+    }
+    else
+    {
+        Node *prevOfLastNode = Last->prev;
+        Last->prev = NULL;
+        prevOfLastNode->next = NULL;
+        delete Last;
+        Last = prevOfLastNode;
+    }
+    N_Number--;
+}
+void Linkedlist::MakeListEmpty(const int NumOfNodes)
+{
+    for (int i = 0; i < NumOfNodes; i++)
+    {
+        this->LastNdel();
+    }
+}
+void Linkedlist::Def_Organ()
+{
+    int MiddleValue = this->N_numGet();
+    MiddleValue += 1;
+    MiddleValue /= 2;
+    Node *Ptr = this->First;
+    for (int i = 1; i < MiddleValue; i++)
+    {
+        Ptr = Ptr->next;
+    }
+    this->Organ = Ptr->data;
+}
+int Linkedlist::Ret_Organ() const
+{
+    return this->Organ;
 }
 ostream &operator<<(ostream &os, const Linkedlist &liste)
 {
