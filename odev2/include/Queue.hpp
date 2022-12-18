@@ -2,7 +2,7 @@
 #define Queue_hpp
 #include <iostream>
 #include <iomanip>
-#include "LNode.hpp"
+#include "CellNode.hpp"
 using namespace std;
 class Queue
 {
@@ -19,8 +19,8 @@ public:
     friend ostream &operator<<(ostream &os, Queue &Queue);
 
 private:
-    Node *First;
-    Node *Last;
+    CellNode *First;
+    CellNode *Last;
     int N_Number;
 };
 #endif

@@ -9,7 +9,7 @@ Queue::~Queue()
 {
     while (First != NULL)
     {
-        Node *Ptr = First;
+        CellNode *Ptr = First;
         First = First->next;
         delete Ptr;
     }
@@ -22,15 +22,15 @@ bool Queue::empty()
 }
 void Queue::add(int data)
 {
-    Node *new_Node = new Node(data);
+    CellNode *new_CellNode = new CellNode(data);
     if (First == NULL)
     {
-        First = Last = new_Node;
+        First = Last = new_CellNode;
     }
     else
     {
-        Last->next = new_Node;
-        Last = new_Node;
+        Last->next = new_CellNode;
+        Last = new_CellNode;
     }
     N_Number++;
 }
@@ -38,7 +38,7 @@ void Queue::dlt()
 {
     if (First != NULL)
     {
-        Node *Ptr = First->next;
+        CellNode *Ptr = First->next;
         delete First;
         First = Ptr;
         if (First == NULL)
@@ -60,7 +60,7 @@ int Queue::get_Organ() const
     int eleman_Number = this->GetN_Number();
     eleman_Number += 1;
     eleman_Number /= 2;
-    Node *Ptr = this->First;
+    CellNode *Ptr = this->First;
     for (int i = 1; i < eleman_Number; i++)
     {
         Ptr = Ptr->next;
@@ -71,7 +71,7 @@ ostream &operator<<(ostream &os, Queue &queue)
 {
     if (queue.First == NULL)
         os << "----KUYRUK BOS----";
-    Node *Ptr = queue.First;
+    CellNode *Ptr = queue.First;
     while (Ptr != 0)
     {
         os << setw(5) << Ptr->data;
