@@ -26,27 +26,69 @@ void Organ::CheckMutability()
 {
     if (this->OrganTree->ReturnRootKey() % 50 == 0)
     {
-        mutability = true;
+        this->mutability = true;
     }
+    else
+        this->mutability = false;
 }
 void Organ::addElement(int data)
 {
-    if (is_tweny() == false)
+    if (this->NumOFNodes == 0)
     {
-        if (this->NumOFNodes == 0)
-            this->CheckMutability();
-        OrganTree->AddLeaf(data);
-        NumOFNodes++;
+        this->CheckMutability();
     }
-    else
-        cout << "\nCannot adding the Node Number is 20\n";
+    OrganTree->AddLeaf(data);
+    NumOFNodes++;
+}
+
+void Organ::PrintPostOrder()
+{
+    this->OrganTree->PrintPostOrder();
+}
+BST_Node *Organ::retFirst() const
+{
+    return OrganTree->retFirst();
+}
+void Organ::BstTOLinked()
+{
+    this->BstTOLinkedListPrivate(this->retFirst());
+}
+void Organ::BstTOLinkedListPrivate(BST_Node *Ptr)
+{
+    if (Ptr != NULL)
+    {
+        BstTOLinkedListPrivate(Ptr->left);
+        BstTOLinkedListPrivate(Ptr->right);
+        LinkedList.addLinked_Node(Ptr->key);
+    }
+}
+
+int *Organ::BstTOArray()
+{
+    BstTOArrayPrivate();
 }
 void Organ::DelAllElements()
 {
     this->OrganTree->del_AllNodes();
     this->NumOFNodes = 0;
 }
-void Organ::PrintPostOrder()
+int *Organ::BstTOArrayPrivate()
 {
-    this->OrganTree->PrintPostOrder();
+    BstTOLinked();
+    int *Array = LinkedList.LinkedToArray();
+    LinkedList.MakeListEmpty(LinkedList.N_numGet());
+    return Array;
+}
+void Organ::PrintLinked()
+{
+    cout << LinkedList;
+}
+void Organ::ArrayToBST(int *Array, int ArrLength)
+{
+    for (int i = 0; i < ArrLength; i++)
+    {
+        this->addElement(Array[i]);
+    }
+    // AFTER COPYING THE ARRAY WILL BE DELETED
+    delete[] Array;
 }

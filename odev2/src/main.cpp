@@ -10,6 +10,7 @@
 #include "BST.hpp"
 #include "Tissue.hpp"
 #include "Organ.hpp"
+#include "Bsystem.hpp"
 
 using namespace std;
 int main()
@@ -50,17 +51,60 @@ int main()
     myfile.close();
     cout << tissues[0];
     cout << "\nAfrer sorting()\n";
-
-    Organ Tester;
-    // for (size_t i = 0; i < 19; i++)
-    // {
-    //     Tester.addElement(i);
-    // }
-    Tester.PrintPostOrder();
-    BST A;
-    for (size_t i = 0; i < 19; i++)
+    cout << "\nFirst 20 ORGAN\n";
+    for (int i = 0; i < line_counter; i++)
     {
-        A.AddLeaf(i);
+        tissues[i].sort();
     }
-    A.PrintPostOrder();
+    for (int i = 0; i < 20; i++)
+    {
+        cout << "Organelement [" << i << "] =" << tissues[i].Ret_Organ() << endl;
+    }
+
+    const int NumOfOrgans = line_counter / 20;
+    const int NumOfSystems = NumOfOrgans / 100;
+    // cout << "\nNumOfOrgans" << NumOfOrgans;
+    // cout << "\nNumOfSystems" << NumOfSystems;
+    int Organ_counter = 0;
+    Organ *organ = new Organ[NumOfOrgans];
+    // for (int i = 0; i < line_counter;)
+    // {
+    //     while (organ->is_tweny() == false)
+    //     {
+    //         // if (i < 20)
+
+    //         cout << "adding element " << tissues[i].Ret_Organ() << endl;
+    //         organ[Organ_counter].addElement(tissues[i].Ret_Organ());
+    //         i++;
+    //     }
+    //     Organ_counter++;
+    // }
+    for (int i = 0; i < line_counter;)
+    {
+        while (organ[Organ_counter].is_tweny() == false)
+        {
+            organ[Organ_counter].addElement(tissues[i].Ret_Organ());
+            i++;
+        }
+        Organ_counter++;
+    }
+
+    organ->PrintPostOrder();
+    cout << "\nMUTABILITY " << organ->ret_mutability() << "\t ROOT" << organ->retFirst()->key << endl;
+    Bsystem *Organsim = new Bsystem[NumOfSystems];
+    int Organsim_counter = 0;
+    for (size_t i = 0; i < NumOfOrgans;)
+    {
+        while (Organsim[Organsim_counter].GetNodeNum() != 100)
+        {
+            Organsim[Organsim_counter].AddBst_Node(&organ[i]);
+            i++;
+        }
+        Organsim_counter++;
+    }
+
+    // organ->addElement(1);
+    // Bsystem a;
+    // a.AddBst_Node(organ);
+    // organ->PrintPostOrder();
 }

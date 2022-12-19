@@ -126,34 +126,7 @@ int BST::ReturnNumOfNodes() const
 {
     return this->NumOfNodes;
 }
-int *BST::BstTOArray()
-{
-    BstTOArrayPrivate();
-}
-void BST::BstTOLinked()
-{
-    this->BstTOLinkedListPrivate(this->root);
-}
-void BST::BstTOLinkedListPrivate(BST_Node *Ptr)
-{
-    if (Ptr != NULL)
-    {
-        BstTOLinkedListPrivate(Ptr->left);
-        BstTOLinkedListPrivate(Ptr->right);
-        LinkedList.addLinked_Node(Ptr->key);
-    }
-}
-int *BST::BstTOArrayPrivate()
-{
-    BstTOLinked();
-    int *Array = LinkedList.LinkedToArray();
-    LinkedList.MakeListEmpty(LinkedList.N_numGet());
-    return Array;
-}
-void BST::PrintLinked()
-{
-    cout << LinkedList;
-}
+
 int BST::height()
 {
     return heightPrivate(this->root);
@@ -178,4 +151,8 @@ bool BST::Balance()
     {
         return false;
     }
+}
+BST_Node *BST::retFirst() const
+{
+    return root;
 }

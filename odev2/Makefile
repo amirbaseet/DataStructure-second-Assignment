@@ -9,10 +9,10 @@ compile:
 		g++ -c -I "./include" ./src/BST_Node.cpp -o ./lib/BST_Node.o
 		g++ -c -I "./include" ./src/BST.cpp -o ./lib/BST.o
 		g++ -c -I "./include" ./src/Organ.cpp -o ./lib/Organ.o
-		g++ -c -I "./include" ./src/OrganlinkedNode.cpp -o ./lib/OrganlinkedNode.o
-		g++ -c -I "./include" ./src/OrganlinkedList.cpp -o ./lib/OrganlinkedList.o
+		g++ -c -I "./include" ./src/BsystemNode.cpp -o ./lib/BsystemNode.o
+		g++ -c -I "./include" ./src/Bsystem.cpp -o ./lib/Bsystem.o
 
 Debug:
-		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o ./lib/Organ.o ./lib/OrganlinkedNode.o ./lib/OrganlinkedList.o -o ./bin/program
+		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o ./lib/Organ.o ./lib/BsystemNode.o ./lib/Bsystem.o -o ./bin/program
 start:
 	bin/program
