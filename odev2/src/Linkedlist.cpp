@@ -6,52 +6,48 @@ Linkedlist::Linkedlist(/* args */)
 {
     First = Last = NULL;
     N_Number = 0;
-    Organ = 0;
 }
 
 Linkedlist::~Linkedlist()
 {
-    Node *Ptr = this->First;
-    for (int i = 0; i < this->N_numGet(); i++)
-    {
-        Node *del = Ptr;
-        Ptr = Ptr->next;
-        delete del;
-    }
+    // calling function to delete all nodes
+    this->MakeListEmpty(N_numGet());
 }
 int Linkedlist::N_numGet() const
 {
+    // returninig the number of the nodes
     return N_Number;
 }
-Node *Linkedlist::ReturnFirst() const
+Linked_Node *Linkedlist::ReturnFirst() const
 {
+    // returning the first node from the linked list
     return this->First;
 }
-void Linkedlist::addNode(int Data)
+void Linkedlist::addLinked_Node(int Data)
 {
-    // Adding a Node to A linked list
+    // Adding a Linked_Node to A linked list
     /*
-    first of all looking if the List is empty then The first =Last = New Node
-    if Not will look at the list if it has a one Node if true the last Node pointer = new node and the prev of the last=first
-    if not will  make the Prev of new node = last then make it the last node in the list
+    first of all looking if the List is empty then The first =Last = New Linked_Node
+    if Not will look at the list if it has a one Linked_Node if true the last Linked_Node pointer = new Linked_Node and the prev of the last=first
+    if not will  make the Prev of new Linked_Node = last then make it the last Linked_Node in the list
     */
-    Node *New_node = new Node(Data);
+    Linked_Node *New_Linked_Node = new Linked_Node(Data);
     if (First == NULL)
     {
-        First = Last = New_node;
+        First = Last = New_Linked_Node;
     }
     else if (First->next == NULL)
     {
 
-        Last = New_node;
+        Last = New_Linked_Node;
         Last->prev = First;
         First->next = Last;
     }
     else
     {
-        New_node->prev = Last;
-        Last->next = New_node;
-        Last = New_node;
+        New_Linked_Node->prev = Last;
+        Last->next = New_Linked_Node;
+        Last = New_Linked_Node;
     }
     N_Number++;
 }
@@ -60,7 +56,7 @@ int *Linkedlist::LinkedToArray()
     {
         int NumOfElements = this->N_numGet();
         int *array = new int[NumOfElements];
-        Node *Ptr = First;
+        Linked_Node *Ptr = First;
         for (int i = 0; i < NumOfElements; i++)
         {
             array[i] = Ptr->data;
@@ -69,19 +65,7 @@ int *Linkedlist::LinkedToArray()
         return array;
     }
 }
-void Linkedlist::sort()
-{
-    int *List = this->LinkedToArray();
-    const int List_Length = this->N_numGet();
-    this->MakeListEmpty(List_Length);
-    Radix Do_sort(List, List_Length);
-    int *sortedList = Do_sort.sort();
-    for (int i = 0; i < List_Length; i++)
-    {
-        this->addNode(sortedList[i]);
-    }
-    this->Def_Organ();
-}
+
 void Linkedlist::LastNdel()
 {
     if (this->First == NULL)
@@ -93,41 +77,26 @@ void Linkedlist::LastNdel()
     }
     else
     {
-        Node *prevOfLastNode = Last->prev;
+        Linked_Node *prevOfLastLinked_Node = Last->prev;
         Last->prev = NULL;
-        prevOfLastNode->next = NULL;
+        prevOfLastLinked_Node->next = NULL;
         delete Last;
-        Last = prevOfLastNode;
+        Last = prevOfLastLinked_Node;
     }
     N_Number--;
 }
-void Linkedlist::MakeListEmpty(const int NumOfNodes)
+void Linkedlist::MakeListEmpty(const int NumOfLinked_Nodes)
 {
-    for (int i = 0; i < NumOfNodes; i++)
+    for (int i = 0; i < NumOfLinked_Nodes; i++)
     {
         this->LastNdel();
     }
 }
-void Linkedlist::Def_Organ()
-{
-    int MiddleValue = this->N_numGet();
-    MiddleValue += 1;
-    MiddleValue /= 2;
-    Node *Ptr = this->First;
-    for (int i = 1; i < MiddleValue; i++)
-    {
-        Ptr = Ptr->next;
-    }
-    this->Organ = Ptr->data;
-}
-int Linkedlist::Ret_Organ() const
-{
-    return this->Organ;
-}
+
 ostream &operator<<(ostream &os, const Linkedlist &liste)
 {
     using namespace std;
-    Node *Ptr = liste.First;
+    Linked_Node *Ptr = liste.First;
     cout << "----------------------------------------------------------------" << endl;
     cout << setw(10) << "Adress:" << setw(10) << "Data:" << setw(15) << "Prev:" << setw(15) << "next:" << endl;
     cout << "----------------------------------------------------------------" << endl;

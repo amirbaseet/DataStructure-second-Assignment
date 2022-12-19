@@ -1,6 +1,6 @@
 #ifndef Linkedlist_hpp
 #define Linkedlist_hpp
-#include <LNode.hpp>
+#include <Linked_Node.hpp>
 #include <Radix.hpp>
 
 using namespace std;
@@ -10,22 +10,18 @@ public:
     Linkedlist();
     ~Linkedlist();
     int N_numGet() const;
-    void addNode(int data);
-    Node *ReturnFirst() const;
+    void addLinked_Node(int data);
+    Linked_Node *ReturnFirst() const;
     int *LinkedToArray();
     void LastNdel();
-    void MakeListEmpty(const int NumOfNodes);
-    void sort();
-    void Def_Organ();
+    void MakeListEmpty(const int NumOfLinked_Nodes);
 
-    int Ret_Organ() const;
     friend ostream &operator<<(ostream &os, const Linkedlist &liste);
 
 private:
-    Node *First;
-    Node *Last;
+    Linked_Node *First;
+    Linked_Node *Last;
     int N_Number;
-    int Organ; // the middle of The List
 };
 
 #endif

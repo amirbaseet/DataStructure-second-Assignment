@@ -9,18 +9,19 @@ BST::BST()
 }
 BST::~BST()
 {
+    del_AllNodes_private(this->root);
 }
 void BST::AddLeaf(int key)
 {
     AddLeafPrivate(key, root);
 }
-void BST::AddLeafPrivate(int key, TNode *Ptr)
+void BST::AddLeafPrivate(int key, BST_Node *Ptr)
 {
     // if the key already exist will be added to the left
-    TNode *New_TNode = new TNode(key);
+    BST_Node *New_BST_Node = new BST_Node(key);
     if (root == NULL)
     {
-        root = New_TNode;
+        root = New_BST_Node;
         this->NumOfNodes++;
     }
     else if (key < Ptr->key || key == Ptr->key)
@@ -31,7 +32,7 @@ void BST::AddLeafPrivate(int key, TNode *Ptr)
         }
         else
         {
-            Ptr->left = New_TNode;
+            Ptr->left = New_BST_Node;
             this->NumOfNodes++;
         }
     }
@@ -43,7 +44,7 @@ void BST::AddLeafPrivate(int key, TNode *Ptr)
         }
         else
         {
-            Ptr->right = New_TNode;
+            Ptr->right = New_BST_Node;
             this->NumOfNodes++;
         }
     }
@@ -53,7 +54,7 @@ void BST::PrintInOrder()
 {
     PrintInOrderPrivate(this->root);
 }
-void BST::PrintInOrderPrivate(TNode *Ptr)
+void BST::PrintInOrderPrivate(BST_Node *Ptr)
 {
     if (root != NULL)
     {
@@ -79,7 +80,7 @@ void BST::PrintPostOrder()
     }
     PrintPostOrderPrivate(this->root);
 }
-void BST::PrintPostOrderPrivate(TNode *Ptr)
+void BST::PrintPostOrderPrivate(BST_Node *Ptr)
 {
     if (Ptr != NULL)
     {
@@ -119,7 +120,7 @@ void BST::del_AllNodes()
 {
     del_AllNodes_private(this->root);
 }
-void BST::del_AllNodes_private(TNode *&Ptr)
+void BST::del_AllNodes_private(BST_Node *&Ptr)
 {
     if (Ptr == NULL)
         return;
@@ -144,13 +145,13 @@ void BST::BstTOLinked()
 {
     this->BstTOLinkedListPrivate(this->root);
 }
-void BST::BstTOLinkedListPrivate(TNode *Ptr)
+void BST::BstTOLinkedListPrivate(BST_Node *Ptr)
 {
     if (Ptr != NULL)
     {
         BstTOLinkedListPrivate(Ptr->left);
         BstTOLinkedListPrivate(Ptr->right);
-        LinkedList.addCellNode(Ptr->key);
+        LinkedList.addLinked_Node(Ptr->key);
     }
 }
 int *BST::BstTOArrayPrivate()

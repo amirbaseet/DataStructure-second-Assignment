@@ -1,14 +1,14 @@
 #ifndef BST_hpp
 #define BST_hpp
-#include <TNode.hpp>
-#include "Tissue.hpp"
+#include <BST_Node.hpp>
+#include "Linkedlist.hpp"
 
 class BST
 {
 public:
     BST();
     ~BST();
-    TNode *CreatLeaf(int key);
+    BST_Node *CreatLeaf(int key);
     void AddLeaf(int key);
     void PrintInOrder();
     void PrintPostOrder();
@@ -23,14 +23,14 @@ public:
     void PrintLinked();
 
 private:
-    TNode *root;
+    BST_Node *root;
     int *BstTOArrayPrivate();
-    void BstTOLinkedListPrivate(TNode *ptr);
-    void del_AllNodes_private(TNode *&root);
-    void AddLeafPrivate(int key, TNode *ptr);
-    void PrintInOrderPrivate(TNode *ptr);
-    void PrintPostOrderPrivate(TNode *ptr);
-    Tissue LinkedList;
+    void BstTOLinkedListPrivate(BST_Node *ptr);
+    void del_AllNodes_private(BST_Node *&root);
+    void AddLeafPrivate(int key, BST_Node *ptr);
+    void PrintInOrderPrivate(BST_Node *ptr);
+    void PrintPostOrderPrivate(BST_Node *ptr);
+    Linkedlist LinkedList;
     int NumOfNodes;
 };
 

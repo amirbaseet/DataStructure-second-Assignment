@@ -1,119 +1,36 @@
-#include <iostream>
-#include <Tissue.hpp>
-#include <iomanip>
-using namespace std;
+#include "Tissue.hpp"
 Tissue::Tissue(/* args */)
 {
-    First = Last = NULL;
-    N_Number = 0;
     Organ = 0;
+    tissueList = new Linkedlist;
 }
-
 Tissue::~Tissue()
 {
-    CellNode *Ptr = this->First;
-    for (int i = 0; i < this->N_numGet(); i++)
-    {
-        CellNode *del = Ptr;
-        Ptr = Ptr->next;
-        delete del;
-    }
+    // deleting the tissueList from the heap
+    this->Del_List();
 }
-int Tissue::N_numGet() const
+Linked_Node *Tissue::ret_First_Cell() const
 {
-    return N_Number;
+    // returning the first elemnet in the list
+    return tissueList->ReturnFirst();
 }
-CellNode *Tissue::ReturnFirst() const
+int Tissue::DNA_Length() const
 {
-    return this->First;
+    // returning the length of the list
+    tissueList->N_numGet();
 }
-void Tissue::addCellNode(int Data)
+void Tissue::add_cell(int data)
 {
-    // Adding a CellNode to A linked list
-    /*
-    first of all looking if the List is empty then The first =Last = New CellNode
-    if Not will look at the list if it has a one CellNode if true the last CellNode pointer = new CellNode and the prev of the last=first
-    if not will  make the Prev of new CellNode = last then make it the last CellNode in the list
-    */
-    CellNode *New_CellNode = new CellNode(Data);
-    if (First == NULL)
-    {
-        First = Last = New_CellNode;
-    }
-    else if (First->next == NULL)
-    {
-
-        Last = New_CellNode;
-        Last->prev = First;
-        First->next = Last;
-    }
-    else
-    {
-        New_CellNode->prev = Last;
-        Last->next = New_CellNode;
-        Last = New_CellNode;
-    }
-    N_Number++;
-}
-int *Tissue::LinkedToArray()
-{
-    {
-        int NumOfElements = this->N_numGet();
-        int *array = new int[NumOfElements];
-        CellNode *Ptr = First;
-        for (int i = 0; i < NumOfElements; i++)
-        {
-            array[i] = Ptr->data;
-            Ptr = Ptr->next;
-        }
-        return array;
-    }
-}
-void Tissue::sort()
-{
-    int *List = this->LinkedToArray();
-    const int List_Length = this->N_numGet();
-    this->MakeListEmpty(List_Length);
-    Radix Do_sort(List, List_Length);
-    int *sortedList = Do_sort.sort();
-    for (int i = 0; i < List_Length; i++)
-    {
-        this->addCellNode(sortedList[i]);
-    }
-    this->Def_Organ();
-}
-void Tissue::LastNdel()
-{
-    if (this->First == NULL)
-        return;
-    if (First == Last)
-    {
-        delete First;
-        First = Last = NULL;
-    }
-    else
-    {
-        CellNode *prevOfLastCellNode = Last->prev;
-        Last->prev = NULL;
-        prevOfLastCellNode->next = NULL;
-        delete Last;
-        Last = prevOfLastCellNode;
-    }
-    N_Number--;
-}
-void Tissue::MakeListEmpty(const int NumOfCellNodes)
-{
-    for (int i = 0; i < NumOfCellNodes; i++)
-    {
-        this->LastNdel();
-    }
+    // adding  an element to the list
+    this->tissueList->addLinked_Node(data);
 }
 void Tissue::Def_Organ()
 {
-    int MiddleValue = this->N_numGet();
+    // getting the middle value of the list after sorting it using Radix Sort
+    int MiddleValue = this->DNA_Length();
     MiddleValue += 1;
     MiddleValue /= 2;
-    CellNode *Ptr = this->First;
+    Linked_Node *Ptr = this->ret_First_Cell();
     for (int i = 1; i < MiddleValue; i++)
     {
         Ptr = Ptr->next;
@@ -122,20 +39,40 @@ void Tissue::Def_Organ()
 }
 int Tissue::Ret_Organ() const
 {
+    // returning the middle value o  the lists
     return this->Organ;
 }
-ostream &operator<<(ostream &os, const Tissue &liste)
+
+void Tissue::sort()
 {
-    using namespace std;
-    CellNode *Ptr = liste.First;
-    cout << "----------------------------------------------------------------" << endl;
-    cout << setw(10) << "Adress:" << setw(10) << "Data:" << setw(15) << "Prev:" << setw(15) << "next:" << endl;
-    cout << "----------------------------------------------------------------" << endl;
-    for (int i = 0; i < liste.N_numGet(); i++)
+    // sorting the list using Radix Sort
+    int *List = tissueList->LinkedToArray();
+    const int List_Length = tissueList->N_numGet();
+    tissueList->MakeListEmpty(List_Length);
+    Radix Do_sort(List, List_Length);
+    int *sortedList = Do_sort.sort();
+    for (int i = 0; i < List_Length; i++)
     {
-        cout << setw(10) << Ptr << setw(10) << Ptr->data << setw(15) << Ptr->prev << setw(15) << Ptr->next << endl;
-        cout << "----------------------------------------------------------------" << endl;
+        tissueList->addLinked_Node(sortedList[i]);
+    }
+    this->Def_Organ();
+}
+
+ostream &operator<<(ostream &os, const Tissue &tissueList)
+{
+    Linked_Node *Ptr = tissueList.ret_First_Cell();
+    cout << "----------------------------------------------------------------------" << endl;
+    cout << setw(10) << "Adress:" << setw(10) << "DNA" << setw(15) << "Prev:" << setw(15) << "next:" << setw(15) << "Organ" << setw(15) << "index" << endl;
+    cout << "----------------------------------------------------------------------" << endl;
+    for (int i = 0; i < tissueList.DNA_Length(); i++)
+    {
+        cout << setw(10) << Ptr << setw(10) << Ptr->data << setw(15) << Ptr->prev << setw(13) << Ptr->next << setw(15) << tissueList.Ret_Organ() << setw(15) << i << endl;
+        cout << "----------------------------------------------------------------------" << endl;
         Ptr = Ptr->next;
     }
     return os;
+}
+void Tissue::Del_List()
+{
+    delete this->tissueList;
 }

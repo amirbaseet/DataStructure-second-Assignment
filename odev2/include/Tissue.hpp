@@ -1,31 +1,25 @@
 #ifndef Tissue_hpp
 #define Tissue_hpp
-#include <CellNode.hpp>
-#include <Radix.hpp>
-
+#include "Linkedlist.hpp"
+#include <iostream>
 using namespace std;
 class Tissue
 {
 public:
-    Tissue();
+    Tissue(/* args */);
     ~Tissue();
-    int N_numGet() const;
-    void addCellNode(int data);
-    CellNode *ReturnFirst() const;
-    int *LinkedToArray();
-    void LastNdel();
-    void MakeListEmpty(const int NumOfCellNodes);
-    void sort();
     void Def_Organ();
-
+    void sort();
+    void add_cell(int data);
+    void Del_List();
+    int DNA_Length() const;
     int Ret_Organ() const;
-    friend ostream &operator<<(ostream &os, const Tissue &liste);
+    Linked_Node *ret_First_Cell() const;
+    friend ostream &operator<<(ostream &os, const Tissue &tissueList);
 
 private:
-    CellNode *First;
-    CellNode *Last;
-    int N_Number;
-    int Organ; // the middle of The List
+    int Organ;
+    Linkedlist *tissueList;
 };
 
 #endif
