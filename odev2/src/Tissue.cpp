@@ -8,13 +8,14 @@ Tissue::~Tissue()
 {
     // deleting the tissueList from the heap
     this->Del_List();
+    delete tissueList;
 }
 Linked_Node *Tissue::ret_First_Cell() const
 {
     // returning the first elemnet in the list
     return tissueList->ReturnFirst();
 }
-int Tissue::DNA_Length() const
+int Tissue::tissue_Length() const
 {
     // returning the length of the list
     tissueList->N_numGet();
@@ -27,7 +28,7 @@ void Tissue::add_cell(int data)
 void Tissue::Def_Organ()
 {
     // getting the middle value of the list after sorting it using Radix Sort
-    int MiddleValue = this->DNA_Length();
+    int MiddleValue = this->tissue_Length();
     MiddleValue += 1;
     MiddleValue /= 2;
     Linked_Node *Ptr = this->ret_First_Cell();
@@ -56,23 +57,25 @@ void Tissue::sort()
         tissueList->addLinked_Node(sortedList[i]);
     }
     this->Def_Organ();
+    // AFTER SORTING THE LIST AND DEFINING THE ORGAN ELEMENT WE WILL NOT NEED THE LIST ANY MORE SO IAM DELETING IT
+    Del_List();
 }
-
+void Tissue::Del_List()
+{
+    tissueList->MakeListEmpty(this->tissue_Length());
+}
 ostream &operator<<(ostream &os, const Tissue &tissueList)
 {
     Linked_Node *Ptr = tissueList.ret_First_Cell();
+
     cout << "----------------------------------------------------------------------" << endl;
     cout << setw(10) << "Adress:" << setw(10) << "DNA" << setw(15) << "Prev:" << setw(15) << "next:" << setw(15) << "Organ" << setw(15) << "index" << endl;
     cout << "----------------------------------------------------------------------" << endl;
-    for (int i = 0; i < tissueList.DNA_Length(); i++)
+    for (int i = 0; i < tissueList.tissue_Length(); i++)
     {
         cout << setw(10) << Ptr << setw(10) << Ptr->data << setw(15) << Ptr->prev << setw(13) << Ptr->next << setw(15) << tissueList.Ret_Organ() << setw(15) << i << endl;
         cout << "----------------------------------------------------------------------" << endl;
         Ptr = Ptr->next;
     }
     return os;
-}
-void Tissue::Del_List()
-{
-    delete this->tissueList;
 }

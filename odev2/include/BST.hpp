@@ -14,15 +14,15 @@ public:
     void PrintInOrder();
     void PrintPostOrder();
     int ReturnRootKey();
-    int ReturnNumOfNodes();
+    int ReturnNumOfNodes() const;
     int height();
     bool empty();
-    bool is_twenyOrgan();
-    bool mutability();
+    // bool is_twenyOrgan();
     void del_AllNodes();
     int *BstTOArray();
     void BstTOLinked();
     void PrintLinked();
+    bool Balance();
 
 private:
     BST_Node *root;
@@ -33,7 +33,6 @@ private:
     void PrintInOrderPrivate(BST_Node *ptr);
     void PrintPostOrderPrivate(BST_Node *ptr);
     int heightPrivate(BST_Node *Ptr);
-    bool Balance();
     Linkedlist LinkedList;
     int NumOfNodes;
 };

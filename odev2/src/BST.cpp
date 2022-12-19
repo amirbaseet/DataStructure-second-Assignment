@@ -95,18 +95,7 @@ bool BST::empty()
         return true;
     return false;
 }
-bool BST::is_twenyOrgan()
-{
-    if (this->NumOfNodes == 20)
-        return true;
-    return false;
-}
-bool BST::mutability()
-{
-    if (this->root->key % 50 == 0)
-        return true;
-    return false;
-}
+
 int BST::ReturnRootKey()
 {
     if (root != NULL)
@@ -133,7 +122,7 @@ void BST::del_AllNodes_private(BST_Node *&Ptr)
         this->NumOfNodes--;
     }
 }
-int BST::ReturnNumOfNodes()
+int BST::ReturnNumOfNodes() const
 {
     return this->NumOfNodes;
 }

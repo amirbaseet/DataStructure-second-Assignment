@@ -12,7 +12,7 @@ public:
     void sort();
     void add_cell(int data);
     void Del_List();
-    int DNA_Length() const;
+    int tissue_Length() const;
     int Ret_Organ() const;
     Linked_Node *ret_First_Cell() const;
     friend ostream &operator<<(ostream &os, const Tissue &tissueList);
