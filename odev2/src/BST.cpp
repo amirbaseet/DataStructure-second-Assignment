@@ -129,7 +129,7 @@ int BST::ReturnNumOfNodes() const
 
 int BST::height()
 {
-    return heightPrivate(this->root);
+    return heightPrivate(this->root->right) - heightPrivate(this->root->left);
 }
 int BST::heightPrivate(BST_Node *Ptr)
 {

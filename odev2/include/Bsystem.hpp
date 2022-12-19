@@ -12,6 +12,7 @@ public:
     void AddBst_Node(Organ *tree);
     void LastNdel();
     void emptyList();
+    void PrintSystem();
     BsystemNode *ReturnFirst() const;
 
 private:
@@ -19,4 +20,5 @@ private:
     BsystemNode *Last;
     int N_Number;
 };
+
 #endif

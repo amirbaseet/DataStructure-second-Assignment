@@ -19,6 +19,9 @@ public:
     void BstTOLinked();
     void PrintLinked();
     void ArrayToBST(int *array, int ArrayLength);
+    void checkbalanced();
+    bool retbalanced();
+    void PrintNumber();
 
 private:
     Linkedlist LinkedList;
@@ -27,5 +30,8 @@ private:
     int *BstTOArrayPrivate();
     void BstTOLinkedListPrivate(BST_Node *ptr);
     bool mutability;
+    bool Balanced;
 };
+
+
 #endif

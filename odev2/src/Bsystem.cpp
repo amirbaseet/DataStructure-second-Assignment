@@ -71,3 +71,19 @@ void Bsystem::emptyList()
         LastNdel();
     }
 }
+void Bsystem::PrintSystem()
+{
+    BsystemNode *Ptr = this->First;
+    while (Ptr->next != 0)
+    {
+        Ptr->tree->checkbalanced();
+        if (Ptr->tree->retbalanced() == true)
+            cout << " ";
+        else
+            cout << "#";
+
+        Ptr = Ptr->next;
+    }
+
+    cout << endl;
+}

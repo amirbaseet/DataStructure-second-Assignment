@@ -86,11 +86,15 @@ int main()
             organ[Organ_counter].addElement(tissues[i].Ret_Organ());
             i++;
         }
+        organ[Organ_counter].CheckMutability();
         Organ_counter++;
     }
-
+    cout << endl;
     organ->PrintPostOrder();
-    cout << "\nMUTABILITY " << organ->ret_mutability() << "\t ROOT" << organ->retFirst()->key << endl;
+    cout << endl;
+
+    cout << "\nMUTABILITY \t=" << organ[1].ret_mutability() << "\t ROOT =" << organ[1].retFirst()->key << endl;
+    organ[1].PrintNumber();
     Bsystem *Organsim = new Bsystem[NumOfSystems];
     int Organsim_counter = 0;
     for (size_t i = 0; i < NumOfOrgans;)
@@ -102,6 +106,13 @@ int main()
         }
         Organsim_counter++;
     }
+    cout << "PRINTING THE SYSTME \n";
+    // Organsim[0].PrintSystem();
+    for (int i = 0; i < NumOfSystems; i++)
+    {
+        Organsim[i].PrintSystem();
+    }
+    // Organsim[0].PrintSystem();
 
     // organ->addElement(1);
     // Bsystem a;
