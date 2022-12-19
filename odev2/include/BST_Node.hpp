@@ -7,7 +7,6 @@ public:
     int key;
     BST_Node *left;
     BST_Node *right;
-    bool odd; // check if the data odd or not
 
     BST_Node(int key);
     ~BST_Node();

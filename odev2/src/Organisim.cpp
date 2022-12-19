@@ -16,7 +16,7 @@ int Organisim::retElemenNum() const
 }
 void Organisim::PrintOrganisim()
 {
-    cout << setw(24) << "ORGANISM" << endl;
+    cout << setw(30) << "ORGANISM" << endl;
     for (int i = 0; i < this->ExistElemenNum; i++)
     {
         OrganisimArray[i].PrintSystem();
@@ -24,7 +24,7 @@ void Organisim::PrintOrganisim()
 }
 void Organisim::PrintMutatedOrganisim()
 {
-    cout << setw(30) << "MUTATED ORGANISM" << endl;
+    cout << setw(38) << "MUTATED ORGANISM" << endl;
     for (int i = 0; i < this->ExistElemenNum; i++)
     {
         OrganisimArray[i].PrintSystem();
@@ -32,16 +32,11 @@ void Organisim::PrintMutatedOrganisim()
 }
 void Organisim::AddSystme(Organ *Ptr)
 {
-    // if (Full() == false)
-    // {
     OrganisimArray[ExistElemenNum].AddBst_Node(Ptr);
     if (OrganisimArray[ExistElemenNum].GetNodeNum() == 100)
     {
         this->ExistElemenNum++;
-        cout << ExistElemenNum << endl;
     }
-    // cout << "\nNUM OF 26 = " << OrganisimArray[26].GetNodeNum();
-    // }
 }
 bool Organisim::Full()
 {
