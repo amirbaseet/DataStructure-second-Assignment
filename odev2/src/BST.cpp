@@ -165,3 +165,28 @@ void BST::PrintLinked()
 {
     cout << LinkedList;
 }
+int BST::height()
+{
+    return heightPrivate(this->root);
+}
+int BST::heightPrivate(BST_Node *Ptr)
+{
+    if (Ptr != NULL)
+    {
+        return 1 + max(heightPrivate(Ptr->left),
+                       heightPrivate(Ptr->right));
+    }
+    return -1;
+}
+bool BST::Balance()
+{
+    const int height = this->height();
+    if (height == -1 || height == 0 || height == 1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

@@ -8,7 +8,10 @@ compile:
 		g++ -c -I "./include" ./src/Tissue.cpp -o ./lib/Tissue.o
 		g++ -c -I "./include" ./src/BST_Node.cpp -o ./lib/BST_Node.o
 		g++ -c -I "./include" ./src/BST.cpp -o ./lib/BST.o
+		g++ -c -I "./include" ./src/BSTlinkedNode.cpp -o ./lib/BSTlinkedNode.o
+		g++ -c -I "./include" ./src/BSTlinkedList.cpp -o ./lib/BSTlinkedList.o
+
 Debug:
-		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o -o ./bin/program
+		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o ./lib/BSTlinkedNode.o ./lib/BSTlinkedList.o -o ./bin/program
 start:
 	bin/program

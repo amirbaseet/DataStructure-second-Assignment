@@ -58,7 +58,12 @@ int main()
         // cout << "tissueList[" << i << "]= " << tissues[i].Ret_Organ() << endl;
     }
     cout << tissues[18];
-
+    for (int i = 1; i <= 9; i++)
+    {
+        /* code */
+        AS.AddLeaf(1);
+    }
+    AS.AddLeaf(5);
     AS.PrintInOrder();
 
     // Queue tt;
