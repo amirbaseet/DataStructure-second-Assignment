@@ -11,6 +11,7 @@
 #include "Tissue.hpp"
 #include "Organ.hpp"
 #include "Bsystem.hpp"
+#include "Organisim.hpp"
 
 using namespace std;
 int main()
@@ -64,21 +65,10 @@ int main()
     const int NumOfOrgans = line_counter / 20;
     const int NumOfSystems = NumOfOrgans / 100;
     // cout << "\nNumOfOrgans" << NumOfOrgans;
-    // cout << "\nNumOfSystems" << NumOfSystems;
+    cout << "\nNumOfSystems" << NumOfSystems;
     int Organ_counter = 0;
     Organ *organ = new Organ[NumOfOrgans];
-    // for (int i = 0; i < line_counter;)
-    // {
-    //     while (organ->is_tweny() == false)
-    //     {
-    //         // if (i < 20)
 
-    //         cout << "adding element " << tissues[i].Ret_Organ() << endl;
-    //         organ[Organ_counter].addElement(tissues[i].Ret_Organ());
-    //         i++;
-    //     }
-    //     Organ_counter++;
-    // }
     for (int i = 0; i < line_counter;)
     {
         while (organ[Organ_counter].is_tweny() == false)
@@ -95,27 +85,20 @@ int main()
 
     cout << "\nMUTABILITY \t=" << organ[1].ret_mutability() << "\t ROOT =" << organ[1].retFirst()->key << endl;
     organ[1].PrintNumber();
-    Bsystem *Organsim = new Bsystem[NumOfSystems];
+    Organisim Organsim(NumOfSystems);
+    // Bsystem *Organsim = new Bsystem[NumOfSystems];
     int Organsim_counter = 0;
-    for (size_t i = 0; i < NumOfOrgans;)
+    for (size_t i = 0; i < NumOfOrgans; i++)
     {
-        while (Organsim[Organsim_counter].GetNodeNum() != 100)
-        {
-            Organsim[Organsim_counter].AddBst_Node(&organ[i]);
-            i++;
-        }
-        Organsim_counter++;
+        Organsim.AddSystme(&organ[i]);
     }
     cout << "PRINTING THE SYSTME \n";
-    // Organsim[0].PrintSystem();
-    for (int i = 0; i < NumOfSystems; i++)
+    system("cls");
+    Organsim.PrintOrganisim();
+    if (cin.get() == '\n')
     {
-        Organsim[i].PrintSystem();
+        system("cls");
+        Organsim.MutauteALL();
+        Organsim.PrintMutatedOrganisim();
     }
-    // Organsim[0].PrintSystem();
-
-    // organ->addElement(1);
-    // Bsystem a;
-    // a.AddBst_Node(organ);
-    // organ->PrintPostOrder();
 }

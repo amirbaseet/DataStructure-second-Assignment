@@ -11,8 +11,9 @@ compile:
 		g++ -c -I "./include" ./src/Organ.cpp -o ./lib/Organ.o
 		g++ -c -I "./include" ./src/BsystemNode.cpp -o ./lib/BsystemNode.o
 		g++ -c -I "./include" ./src/Bsystem.cpp -o ./lib/Bsystem.o
+		g++ -c -I "./include" ./src/Organisim.cpp -o ./lib/Organisim.o
 
 Debug:
-		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o ./lib/Organ.o ./lib/BsystemNode.o ./lib/Bsystem.o -o ./bin/program
+		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o ./lib/Organ.o ./lib/BsystemNode.o ./lib/Bsystem.o ./lib/Organisim.o -o ./bin/program
 start:
 	bin/program

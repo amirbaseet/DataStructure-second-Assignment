@@ -73,11 +73,12 @@ void Bsystem::emptyList()
 }
 void Bsystem::PrintSystem()
 {
+
     BsystemNode *Ptr = this->First;
     while (Ptr->next != 0)
     {
-        Ptr->tree->checkbalanced();
-        if (Ptr->tree->retbalanced() == true)
+
+        if (Ptr->tree->checkbalanced() == true)
             cout << " ";
         else
             cout << "#";

@@ -5,7 +5,6 @@ Organ::Organ()
     OrganTree = new BST;
     NumOFNodes = 0;
     mutability = false;
-    Balanced = false;
 }
 
 Organ::~Organ()
@@ -93,16 +92,35 @@ void Organ::ArrayToBST(int *Array, int ArrLength)
     // AFTER COPYING THE ARRAY WILL BE DELETED
     delete[] Array;
 }
-void Organ::checkbalanced()
+bool Organ::checkbalanced()
 {
-    bool balance = OrganTree->Balance();
-    this->Balanced = balance;
+    return OrganTree->Balance();
 }
-bool Organ::retbalanced()
-{
-    return this->Balanced;
-}
+
 void Organ::PrintNumber()
 {
     cout << "\nThe Number Of Elements is " << this->NumOFNodes << endl;
+}
+void Organ::Mututeit()
+{
+    if (ret_mutability() == true)
+    {
+        this->MututeitPrivate(this->OrganTree->retFirst());
+        int *BstArray = this->BstTOArray();
+        const int ArrayLength = this->OrganTree->ReturnNumOfNodes();
+        DelAllElements();
+        this->ArrayToBST(BstArray, ArrayLength);
+    }
+}
+void Organ::MututeitPrivate(BST_Node *Ptr)
+{
+    if (Ptr != NULL)
+    {
+        BstTOLinkedListPrivate(Ptr->left);
+        BstTOLinkedListPrivate(Ptr->right);
+        if (Ptr->key % 2 == 0)
+        {
+            Ptr->key /= 2;
+        }
+    }
 }

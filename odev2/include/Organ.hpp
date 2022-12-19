@@ -15,12 +15,12 @@ public:
     void DelAllElements();
     void PrintPostOrder();
     BST_Node *retFirst() const;
+    void Mututeit();
     int *BstTOArray();
     void BstTOLinked();
     void PrintLinked();
     void ArrayToBST(int *array, int ArrayLength);
-    void checkbalanced();
-    bool retbalanced();
+    bool checkbalanced();
     void PrintNumber();
 
 private:
@@ -29,9 +29,8 @@ private:
     int NumOFNodes;
     int *BstTOArrayPrivate();
     void BstTOLinkedListPrivate(BST_Node *ptr);
+    void MututeitPrivate(BST_Node *ptr);
     bool mutability;
-    bool Balanced;
 };
-
 
 #endif
