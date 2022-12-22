@@ -1,3 +1,18 @@
+/**
+ * @file Organ.hpp
+ * @description
+ *          CLASS ORGAN
+            IS A COMPINATION FROM TWO DATA STRUCT
+            BST , LINKED LIST
+            AND HAVING EXTRA FEATURES
+            LIKE
+            CheckMutability() CHECKING IF THE TREE IS ABLE TO MUTATE OR NOT BY LOOKING TO THE ROOT%50==0
+            CONVVERTING FROM BST TO ARRAY USING LINKED LIST
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #include "Organ.hpp"
 #include <iostream>
 Organ::Organ()
@@ -10,6 +25,7 @@ Organ::Organ()
 Organ::~Organ()
 {
     delete OrganTree;
+    OrganTree = NULL;
 }
 bool Organ::is_tweny()
 {
@@ -33,10 +49,7 @@ void Organ::CheckMutability()
 }
 void Organ::addElement(int data)
 {
-    // if (this->NumOFNodes == 0)
-    // {
-    //     this->CheckMutability();
-    // }
+
     OrganTree->AddLeaf(data);
     NumOFNodes++;
 }
@@ -65,7 +78,7 @@ void Organ::BstTOLinkedListPrivate(BST_Node *Ptr)
 
 int *Organ::BstTOArray()
 {
-    BstTOArrayPrivate();
+    return BstTOArrayPrivate();
 }
 void Organ::DelAllElements()
 {
@@ -91,6 +104,7 @@ void Organ::ArrayToBST(int *Array, int ArrLength)
     }
     // AFTER COPYING THE ARRAY WILL BE DELETED
     delete[] Array;
+    Array = NULL;
 }
 bool Organ::checkbalanced()
 {

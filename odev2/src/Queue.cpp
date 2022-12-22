@@ -1,3 +1,11 @@
+/**
+ * @file Queue.cpp
+ * @description ITS AN QUEUE DATA STRUCTURE
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #include <Queue.hpp>
 Queue::Queue(/* args */)
 {
@@ -50,6 +58,7 @@ int Queue::get() const
 {
     if (First != NULL)
         return First->data;
+    return -100000000;
 }
 int Queue::GetN_Number() const
 {

@@ -1,3 +1,11 @@
+/**
+ * @file BST.cpp
+ * @description BST
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #include "BST.hpp"
 #include <iostream>
 #include <cstdlib>

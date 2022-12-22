@@ -12,9 +12,10 @@ compile:
 		g++ -c -I "./include" ./src/BsystemNode.cpp -o ./lib/BsystemNode.o
 		g++ -c -I "./include" ./src/Bsystem.cpp -o ./lib/Bsystem.o
 		g++ -c -I "./include" ./src/Organisim.cpp -o ./lib/Organisim.o
+		g++ -c -I "./include" ./src/Control.cpp -o ./lib/Control.o
 		g++ -c -I "./include" ./src/TestProgram.cpp -o ./lib/TestProgram.o
 
 Debug:
-		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o ./lib/Organ.o ./lib/BsystemNode.o ./lib/Bsystem.o ./lib/Organisim.o ./lib/TestProgram.o -o ./bin/program
+		g++ ./lib/main.o ./lib/Linked_Node.o ./lib/Linkedlist.o ./lib/Queue.o ./lib/Radix.o ./lib/Tissue.o ./lib/BST_Node.o  ./lib/BST.o ./lib/Organ.o ./lib/BsystemNode.o ./lib/Bsystem.o ./lib/Organisim.o ./lib/Control.o ./lib/TestProgram.o -o ./bin/program
 start:
 	bin/program

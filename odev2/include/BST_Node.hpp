@@ -1,3 +1,11 @@
+/**
+ * @file BST_Node
+ * @description BST Node
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #ifndef TLinked_Node_hpp
 #define TLinked_Node_hpp
 #include <iostream>

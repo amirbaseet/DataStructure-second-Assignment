@@ -1,3 +1,11 @@
+/**
+ * @file Linkedlist.cpp
+ * @description LINKED LIST
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #include <iostream>
 #include <Linkedlist.hpp>
 #include <iomanip>
@@ -95,7 +103,6 @@ void Linkedlist::MakeListEmpty(const int NumOfLinked_Nodes)
 
 ostream &operator<<(ostream &os, const Linkedlist &liste)
 {
-    using namespace std;
     Linked_Node *Ptr = liste.First;
     cout << "----------------------------------------------------------------" << endl;
     cout << setw(10) << "Adress:" << setw(10) << "Data:" << setw(15) << "Prev:" << setw(15) << "next:" << endl;

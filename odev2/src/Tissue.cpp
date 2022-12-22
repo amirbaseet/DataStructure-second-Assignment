@@ -1,7 +1,15 @@
+/**
+ * @file Tissue.cpp
+ * @description ITS A TISSUE THAT Consisting of LINKED LIST
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #include "Tissue.hpp"
 Tissue::Tissue(/* args */)
 {
-    Organ = 0;
+    OrganElement = 0;
     tissueList = new Linkedlist;
 }
 Tissue::~Tissue()
@@ -9,6 +17,7 @@ Tissue::~Tissue()
     // deleting the tissueList from the heap
     this->Del_List();
     delete tissueList;
+    tissueList = NULL;
 }
 Linked_Node *Tissue::ret_First_Cell() const
 {
@@ -18,7 +27,7 @@ Linked_Node *Tissue::ret_First_Cell() const
 int Tissue::tissue_Length() const
 {
     // returning the length of the list
-    tissueList->N_numGet();
+    return tissueList->N_numGet();
 }
 void Tissue::add_cell(int data)
 {
@@ -36,17 +45,24 @@ void Tissue::Def_Organ()
     {
         Ptr = Ptr->next;
     }
-    this->Organ = Ptr->data;
+    this->OrganElement = Ptr->data;
 }
 int Tissue::Ret_Organ() const
 {
     // returning the middle value o  the lists
-    return this->Organ;
+    return this->OrganElement;
 }
 
 void Tissue::sort()
 {
     // sorting the list using Radix Sort
+    /*First of all converting the list to Array  then save the length of it into int
+    then Deleting all the elements in the list because will not need them any more
+    Then sorting them using radix sort
+    then converting the Arraylist into the linked List
+    then Defining the Organ elelment (THE MIDDLE VALUE OF THE LINE )
+    then deleting Array list And  LINKED LIST Because we will Not NEED THEM ANY MORE AND THEY ARE ALLOCATED IN THE HEAP
+    */
     int *List = tissueList->LinkedToArray();
     const int List_Length = tissueList->N_numGet();
     tissueList->MakeListEmpty(List_Length);
@@ -57,11 +73,13 @@ void Tissue::sort()
         tissueList->addLinked_Node(sortedList[i]);
     }
     this->Def_Organ();
-    // AFTER SORTING THE LIST AND DEFINING THE ORGAN ELEMENT WE WILL NOT NEED THE LIST ANY MORE SO IAM DELETING IT
-    Del_List();
+    delete[] List;
+    List = NULL;
+    // Del_List();
 }
 void Tissue::Del_List()
 {
+    // To delete all the element in the Linked list
     tissueList->MakeListEmpty(this->tissue_Length());
 }
 ostream &operator<<(ostream &os, const Tissue &tissueList)

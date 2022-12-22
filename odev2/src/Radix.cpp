@@ -1,4 +1,11 @@
-
+/**
+ * @file Radix.hpp
+ * @description ITS A SORT ALGORIHIM THAT USING A QUEUES
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #include "Radix.hpp"
 Radix::Radix(int *numbersPtr, int number)
 {

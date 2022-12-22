@@ -1,8 +1,16 @@
+/**
+ * @file Linkedlist.cpp
+ * @description LINKED LIST
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #ifndef Linkedlist_hpp
 #define Linkedlist_hpp
 #include <Linked_Node.hpp>
-#include <Radix.hpp>
-
+// #include <Radix.hpp>
+#include <iomanip>
 using namespace std;
 class Linkedlist
 {

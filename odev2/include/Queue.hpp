@@ -1,3 +1,11 @@
+/**
+ * @file Queue.hpp
+ * @description ITS AN QUEUE DATA STRUCTURE
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #ifndef Queue_hpp
 #define Queue_hpp
 #include <iostream>

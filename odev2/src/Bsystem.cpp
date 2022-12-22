@@ -1,3 +1,11 @@
+/**
+ * @file Bsystem.CPP
+ * @description linked List OF ORGANS
+ * @course 2 c
+ * @assignment 2
+ * @date 12/20/2022
+ * @author AMRO MOUSA ISMAIL BASEET
+ */
 #include "Bsystem.hpp"
 Bsystem ::Bsystem(/* args */)
 {
@@ -47,6 +55,9 @@ void Bsystem::AddBst_Node(Organ *tree)
 }
 void Bsystem::LastNdel()
 {
+    /*
+    Deleting Last Node From The LIST
+    */
     if (First == NULL)
         return;
     if (First == Last)
@@ -66,6 +77,9 @@ void Bsystem::LastNdel()
 }
 void Bsystem::emptyList()
 {
+    /*
+    DELETE ALL NODES FROM THE LIST
+    */
     for (int i = 0; i < this->GetNodeNum(); i++)
     {
         LastNdel();
@@ -73,7 +87,9 @@ void Bsystem::emptyList()
 }
 void Bsystem::PrintSystem()
 {
-
+    /*
+        Printing the Sistem
+    */
     BsystemNode *Ptr = this->First;
     while (Ptr->next != 0)
     {
@@ -86,5 +102,23 @@ void Bsystem::PrintSystem()
         Ptr = Ptr->next;
     }
 
+    cout << endl;
+}
+void Bsystem::PrintMututedSystem()
+{
+    /*
+        Printing the Sistem
+    */
+    BsystemNode *Ptr = this->ReturnFirst();
+    Ptr->tree->CheckMutability();
+    while (Ptr)
+    {
+        if (!Ptr->tree->checkbalanced() || Ptr->tree->ret_mutability() == true)
+            cout << "#";
+        else
+            cout << " ";
+
+        Ptr = Ptr->next;
+    }
     cout << endl;
 }
