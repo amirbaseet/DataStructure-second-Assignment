@@ -36,7 +36,7 @@ void Organisim::PrintMutatedOrganisim()
     cout << setw(42) << "ORGANISM(MUTATED)" << endl;
     for (int i = 0; i < this->ExistElemenNum; i++)
     {
-        OrganisimArray[i].PrintMututedSystem();
+        OrganisimArray[i].PrintSystem();
     }
 }
 void Organisim::AddSystme(Organ *Ptr)
@@ -67,7 +67,7 @@ void Organisim::MutauteALL()
     for (int i = 0; i < retExstElemenNum(); i++)
     {
         BsystemNode *Ptr = OrganisimArray[i].ReturnFirst();
-        while (Ptr->next != NULL)
+        while (Ptr)
         {
             Ptr->tree->Mututeit();
             Ptr = Ptr->next;

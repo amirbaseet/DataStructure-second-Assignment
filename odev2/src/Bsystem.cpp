@@ -91,34 +91,16 @@ void Bsystem::PrintSystem()
         Printing the Sistem
     */
     BsystemNode *Ptr = this->First;
-    while (Ptr->next != 0)
-    {
-
-        if (Ptr->tree->checkbalanced() == true)
-            cout << " ";
-        else
-            cout << "#";
-
-        Ptr = Ptr->next;
-    }
-
-    cout << endl;
-}
-void Bsystem::PrintMututedSystem()
-{
-    /*
-        Printing the Sistem
-    */
-    BsystemNode *Ptr = this->ReturnFirst();
-    Ptr->tree->CheckMutability();
     while (Ptr)
     {
-        if (!Ptr->tree->checkbalanced() || Ptr->tree->ret_mutability() == true)
-            cout << "#";
-        else
+
+        if (Ptr->tree->checkbalanced())
             cout << " ";
+        else
+            cout << "#";
 
         Ptr = Ptr->next;
     }
+
     cout << endl;
 }

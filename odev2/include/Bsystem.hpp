@@ -20,7 +20,6 @@ public:
     void AddBst_Node(Organ *tree);
     void LastNdel();
     void emptyList();
-    void PrintMututedSystem();
     void PrintSystem();
     BsystemNode *ReturnFirst() const;
 
