@@ -26,7 +26,7 @@ Radix::~Radix()
     for (int i = 0; i < 10; i++)
         delete queues[i];
 
-    delete queues;
+    delete []queues;
 }
 int *Radix::sort()
 {
